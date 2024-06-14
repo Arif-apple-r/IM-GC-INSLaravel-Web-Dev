@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Conditional HTML</title>
+  </head>
+
+  <body>
+    <h1>Berlatih Kondisional</h1>
+    <h3>Mari bermain permainan Werewolf</h3>
+    <h3>Masukkan nama dan peranmu!</h3>
+    <form action="#" id="formConditional">
+      <input type="text" id="name" placeholder="Isi nama di sini" />
+      <input type="text" id="role" placeholder="Isi peran di sini" />
+      <br />
+      <br />
+      <input type="submit" value="Mulai Permainan" />
+    </form>
+    <h3>Jawaban dari console game:</h3>
+    <div id="jawaban"></div>
+
+    <script>
+      var form = document.getElementById("formConditional");
+      var jawaban = document.getElementById("jawaban");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        var name = document.getElementById("name").value;
+        var role = document.getElementById("role").value;
+        var jawabanKonsol;
+
+        if (name === "" && role === "") {
+          jawabanKonsol = "Nama harus diisi!";
+        } else if (name !== "" && role === "") {
+          jawabanKonsol = "Halo " + name + ", Pilih peranmu untuk memulai game!.<br>Peran yang dapat dipilih:<br>- Penyihir<br>- Werewolf<br>- Rakjel";
+        } else if (name !== "" && role === "Penyihir") {
+          jawabanKonsol = "Selamat datang di Dunia Werewolf " + name + ".<br>Halo Penyihir " + name + " kamu dapat melihat siapa yang menjadi Werewolf!✨😆";
+        } else if (name !== "" && role === "Werewolf") {
+          jawabanKonsol = "Selamat datang di Dunia Werewolf " + name + ".<br>Halo Werewolf " + name + " kamu dapat memilih siapa yang akan kamu makan malam ini!😱😈";
+        } else if (name !== "" && role === "Rakjel") {
+          jawabanKonsol = "Selamat datang di Dunia Werewolf " + name + ".<br>Halo Rakjel " + name + " kamu menjadi rakyat jelata😶";
+        } else {
+          jawabanKonsol = "Peran yang kamu pilih tidak tersedia!";
+        }
+
+        jawaban.innerHTML = jawabanKonsol;
+      });
+    </script>
+  </body>
+</html>
